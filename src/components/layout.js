@@ -1,51 +1,83 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import GlobalStyle from "../styles/global"
+import tw from "tailwind.macro"
+import styled from "styled-components"
+import { Link } from "gatsby"
+import Logo from "./logo"
 
-import Header from "./header"
-import "./layout.css"
+const Layout = ({ data }) => (
+  <>
+    <GlobalStyle />
+    <MenuBar />
+  </>
+)
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+export default Layout
+
+const MenuBar = () => {
+  const menuItems = [
+    "Home",
+    "Beauty",
+    "Travel",
+    "Culinary",
+    "Stories",
+    "About",
+    "Contact",
+  ]
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <Bar>
+      <Sol>
+        <Logo />
+      </Sol>
+      <Menu>
+        {menuItems.map(item => (
+          <MenuItem name={item} />
+        ))}
+      </Menu>
+    </Bar>
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+const MenuItem = ({ link, name }) => {
+  return (
+    <Link to={link}>
+      <Item>{name}</Item>
+    </Link>
+  )
 }
 
-export default Layout
+const Item = styled.div`
+  ${tw`w-auto flex flex-wrap mx-2 `}
+  letter-spacing: 0.1em;
+  font-family: "Popo", sans-serif;
+`
+
+const Bar = styled.div`
+  ${tw`fixed`};
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background-color: #fff;
+`
+
+const Menu = styled.div`
+  ${tw`w-full inline-block justify-center flex flex-wrap`};
+  padding: 30px;
+
+  a {
+    color: rgb(153, 153, 153);
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
+  a:hover {
+    color: rgb(17, 17, 17);
+  }
+`
+
+const Sol = styled.div`
+  ${tw`fixed inline-block`};
+  padding: 20px;
+  padding-left: 110px;
+`

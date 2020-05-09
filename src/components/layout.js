@@ -3,18 +3,17 @@ import GlobalStyle from "../styles/global"
 import tw from "tailwind.macro"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import Logo from "./logo"
+import sol from "../images/sol.png"
 
-const Layout = ({ data }) => (
+const Layout = () => (
   <>
     <GlobalStyle />
-    <MenuBar />
   </>
 )
 
 export default Layout
 
-const MenuBar = () => {
+export const MenuBar = () => {
   const menuItems = [
     "Home",
     "Beauty",
@@ -27,9 +26,7 @@ const MenuBar = () => {
 
   return (
     <Bar>
-      <Sol>
-        <Logo />
-      </Sol>
+      <Sol src={sol} />
       <Menu>
         {menuItems.map(item => (
           <MenuItem name={item} />
@@ -54,7 +51,7 @@ const Item = styled.div`
 `
 
 const Bar = styled.div`
-  ${tw`fixed`};
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -76,8 +73,9 @@ const Menu = styled.div`
   }
 `
 
-const Sol = styled.div`
-  ${tw`fixed inline-block`};
-  padding: 20px;
-  padding-left: 110px;
+const Sol = styled.img`
+  ${tw`absolute inline-block`};
+  left: 15%;
+  top: 20%;
+  width: 15rem;
 `

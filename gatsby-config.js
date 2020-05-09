@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/pages/blog`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
@@ -33,5 +40,9 @@ module.exports = {
     // `gatsby-plugin-offline`,
 
     `gatsby-plugin-styled-components`,
+    `gatsby-transformer-remark`,
+
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify`,
   ],
 }

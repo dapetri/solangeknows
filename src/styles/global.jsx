@@ -1,6 +1,4 @@
 import { createGlobalStyle } from "styled-components"
-import tw from "tailwind.macro"
-import styled from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
@@ -11,10 +9,17 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
-    background-color: #8b0000;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+  }
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
 `
 

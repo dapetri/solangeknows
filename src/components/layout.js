@@ -26,7 +26,9 @@ export const MenuBar = () => {
 
   return (
     <Bar>
-      <Sol src={sol} />
+      <a href={"/"}>
+        <Sol src={sol} />
+      </a>
       <Menu>
         {menuItems.map(item => (
           <MenuItem name={item} />
@@ -51,6 +53,7 @@ const Item = styled.div`
 `
 
 const Bar = styled.div`
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;

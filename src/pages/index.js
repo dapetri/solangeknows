@@ -18,6 +18,7 @@ const IndexPage = props => {
     <>
       <SEO title="Home" />
       <Layout />
+      <MenuBar />
       <PostContainer>
         <PostWrapper>
           {posts.map(({ node: post }) => (
@@ -39,6 +40,7 @@ const IndexPage = props => {
 export default IndexPage
 
 const PostContainer = styled.div`
+  padding-top: 5rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

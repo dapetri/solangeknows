@@ -6,11 +6,12 @@ import tw from "tailwind.macro"
 import Img from "gatsby-image"
 import { StaticQuery, graphql } from "gatsby"
 import Arrow from "./images/arrow"
+import PinkArrow from "./images/pink_arrow"
+import BlackArrow from "./images/black_arrow"
 
 const Wrapper = styled.div`
   ${tw`relative no-underline`};
   width: 418px;
-  height: 892px;
   padding: 0 4px 24px;
   text-align: center;
   a {
@@ -24,6 +25,7 @@ const Wrapper = styled.div`
 const Wrappito = styled.div`
   padding-right: 1.5rem;
   padding-left: 1.5rem;
+  padding-bottom: 6rem;
 `
 
 const Category = styled.h1`
@@ -83,7 +85,7 @@ const Black = styled.div`
   height: inherit;
   width: inherit;
   top: 0;
-  bottom: 31%;
+  bottom: 19.6rem;
   left: 1%;
   right: 1%;
 
@@ -94,6 +96,42 @@ const Black = styled.div`
   background-color: #000;
   :hover {
     opacity: 0.3;
+  }
+`
+
+const PinkArrowDiv = styled.div`
+  width: 6%;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+  display: block;
+  position: absolute;
+  height: 20rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+  transition: 0.5s ease;
+  opacity: 1;
+  :hover {
+    opacity: 0;
+  }
+`
+
+const BlackArrowDiv = styled.div`
+  width: 6%;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+  display: block;
+  position: absolute;
+  height: 20rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+  opacity: 0;
+  transition: 0.5s ease;
+  :hover {
+    opacity: 1;
   }
 `
 
@@ -118,6 +156,14 @@ const BlogCard = ({ title, category, pagePath, imagePath, children }) => (
       </Link>
       <Description>{children}</Description>
       <Link to={pagePath}></Link>
+      <Link to={pagePath}>
+        <PinkArrowDiv>
+          <PinkArrow />
+        </PinkArrowDiv>
+        <BlackArrowDiv>
+          <BlackArrow />
+        </BlackArrowDiv>
+      </Link>
     </Wrappito>
   </Wrapper>
 )
